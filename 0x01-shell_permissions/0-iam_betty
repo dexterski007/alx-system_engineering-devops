@@ -1,2 +1,2 @@
 #!/bin/bash
-newuser betty
+su betty
