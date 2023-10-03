@@ -1,2 +1,2 @@
 #!/bin/bash
-egrep -v '^(.)+$'
+grep -n "" | grep -E "^[0-9]+[13579]:"
