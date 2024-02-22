@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# file op
+f=school
+if [ ! -e "$f" ]
+then
+	echo "school file does not exist"
+else
+	echo "school file exists"
+	if [ -f "$f" ]
+		then
+			echo "school file is a regular file"
+	elif [ -s "$f" ]
+		then
+			echo "school file is not empty"
+	elif [ ! -s "$f" ]
+		then
+			echo "school file is empty"
+	else
+		exit
+	fi
+fi
