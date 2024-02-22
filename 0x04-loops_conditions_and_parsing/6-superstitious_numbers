@@ -13,8 +13,7 @@ do
 		18)
 		echo "bad luck from Italy"
 		;;
-		*)
-		echo $i
 	esac
+	echo $i
 	(( i++ ))
 done
