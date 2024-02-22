@@ -6,15 +6,17 @@ then
 	echo "school file does not exist"
 else
 	echo "school file exists"
-	if [ -f "$f" ]
-		then
-			echo "school file is a regular file"
-	elif [ -s "$f" ]
+	if [ -s "$f" ]
 		then
 			echo "school file is not empty"
-	elif [ ! -s "$f" ]
+	fi
+	if [ ! -s "$f" ]
 		then
 			echo "school file is empty"
+	fi
+	if [ -f "$f" ]
+		then
+			echo "school is a regular file"
 	else
 		exit
 	fi
