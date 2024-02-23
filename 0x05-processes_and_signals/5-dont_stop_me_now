@@ -2,4 +2,10 @@
 # who my pid?
 
 pid=$(pgrep -f 4-to_infinity_and_beyond)
-kill $pid
+
+if [ ! -z "$pid" ]
+then
+	kill $pid
+else
+	exit
+fi
