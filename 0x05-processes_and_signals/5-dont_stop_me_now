@@ -3,9 +3,9 @@
 
 pid=$(pgrep -f 4-to_infinity_and_beyond)
 
-if [ ! -z "$pid" ]
+if [ -n "$pid" ]
 then
-	kill $pid
+	kill "$pid"
 else
 	exit
 fi
