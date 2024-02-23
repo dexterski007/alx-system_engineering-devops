@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# who my pid?
+
+pkill -f -SIGKILL 7-highlander
