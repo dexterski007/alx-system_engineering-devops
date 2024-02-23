@@ -3,21 +3,26 @@
 
 start()
 {
-	./manage_my_process & echo $! > /var/run/my_process.pid
+	./manage_my_process &
+	touch /var/run/my_process.pid
+	echo "$!" > /var/run/my_process.pid
 	echo "manage_my_process started"
 }
 
 stop()
 {
-	pkill manage_my_process
-	rm -f /var/run/my_process.pid
 	echo "manage_my_process stopped"
+	pkill manage_my_process
+	rm /var/run/my_process.pid
 }
 
 restart()
 {
-	stop
-	start
+	pkill manage_my_process
+	rm /var/run/my_process.pid
+	./manage_my_process &
+	touch /var/run/my_process.pid
+	echo "$!" > /var/run/my_process.pid	
 	echo "manage_my_process restarted"
 }
 
