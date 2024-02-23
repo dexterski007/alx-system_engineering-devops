@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# who my pid?
+# shellcheck disable=SC2078
+
+sig_term()
+{
+	echo "I am invincible!!!"
+}
+
+trap 'sig_term' SIGTERM
+
+while [ True ]
+do
+	echo "To infinity and beyond"
+	sleep 2
+done
