@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # who my pid?
 
-p=(pgrep infinity)
+p=$(pgrep infinity)
 kill $p
