@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # who my pid?
-
+# shellcheck disable=SC2078
 sig_term()
 {
 	echo "I hate the kill command"
