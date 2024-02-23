@@ -27,11 +27,12 @@ void zombie(void)
 {
 	pid_t pid = fork();
 
-	if (pid == 0)
+	if (pid > 0)
 	{
 		printf("Zombie process created, PID: %d\n", getpid());
-		exit(EXIT_SUCCESS);
 	}
+	else
+		exit(0);
 }
 
 /**
