@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# show ip
+ifconfig | grep 'inet ' | awk '{print $2}'
+
