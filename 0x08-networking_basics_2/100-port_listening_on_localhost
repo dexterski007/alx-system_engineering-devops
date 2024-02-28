@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# fake telnet
+nc -l localhost 98
