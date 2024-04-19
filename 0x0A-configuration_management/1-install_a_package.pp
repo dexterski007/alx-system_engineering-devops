@@ -1,3 +1,4 @@
+#!/usr/bin/pup
 # puppet manifest for installing a package
 
 package {'flask':
