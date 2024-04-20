@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
+#this script generates a school key using betty passphrase
 ssh-keygen -N "betty" -b 4096 -f school
