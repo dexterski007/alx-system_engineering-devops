@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# a script to install and configure nginx with 404 error
+sudo apt -y update
+sudo apt -y install nginx
+sudo bash -c "echo 'Ceci n'\''est pas une page' > /var/www/html/404-error.html"
+sudo sed -i '/listen 80 default_server;/a error_page 404 /404-error.html;' /etc/nginx/sites-available/default
+sudo service nginx restart
