@@ -18,7 +18,7 @@ file { '/var/www/html/index.nginx-debian.html':
 
 file { '/etc/nginx/sites-available/default':
   ensure  => present,
-  content => template('nginx/default_block.erb'),
+  content => template('./default_block.erb'),
   require => Package['nginx'],
   notify  => Service['nginx'],
 }
