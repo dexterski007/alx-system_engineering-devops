@@ -23,8 +23,11 @@ exec { 'nginx-redirect':
 exec { 'nginx-restart':
   command     => '/bin/systemctl restart nginx',
   refreshonly => true,
-  subscribe   => [
-    File['/var/www/html/index.nginx-debian.html'],
-    File['/etc/nginx/sites-available/default'],
-  ],
+  subscribe   => File['/var/www/html/index.nginx-debian.html'],
+}
+
+exec { 'nginx-restart':
+  command     => '/bin/systemctl restart nginx',
+  refreshonly => true,
+  subscribe   => File['/etc/nginx/sites-available/default'],
 }
