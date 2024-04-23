@@ -21,8 +21,8 @@ file { '/etc/nginx/sites-available/default':
   content => "
 server {
     listen 80 default_server;
-    rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
     listen [::]:80 default_server;
+    rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
     root /var/www/html;
 
     index index.html index.htm index.nginx-debian.html;
