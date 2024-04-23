@@ -19,7 +19,7 @@ exec {'hello_world':
 }
 
 exec {'redirection':
-  command  => 'sudo sed -i "/server_name _;/ a\\\trewrite ^/redirect_me http://www.theroom.com permanent;" /etc/nginx/sites-available/default',
+  command  => 'sudo sed -i "/listen 80 default_server;/a\\\trewrite ^/redirect_me http://www.theroom.com permanent;" /etc/nginx/sites-available/default',
   provider => shell,
   path     => '/usr/bin:/usr/sbin:/bin',
 }
