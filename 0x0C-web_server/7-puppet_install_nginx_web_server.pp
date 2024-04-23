@@ -1,53 +1,31 @@
 # puppet nginx server configurator
 
-package { 'nginx':
-  ensure => installed,
+exec {'update':
+  provider => shell,
+  path     => '/usr/bin:/usr/sbin:/bin',
+  command  => 'sudo apt-get -y update',
 }
 
-service { 'nginx':
-  ensure  => running,
-  enable  => true,
-  require => Package['nginx'],
+exec {'install':
+  provider => shell,
+  path     => '/usr/bin:/usr/sbin:/bin',
+  command  => 'sudo apt-get -y install nginx',
 }
 
-file { '/var/www/html/index.nginx-debian.html':
-  ensure  => present,
-  content => 'Hello World!',
-  require => Package['nginx'],
+exec {'hello_world':
+  provider => shell,
+  path     => '/usr/bin:/usr/sbin:/bin',
+  command  => 'sudo echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html',
 }
 
-file { '/etc/nginx/sites-available/default':
-  ensure  => 'present',
-  owner   => 'root',
-  group   => 'root',
-  content => "
-server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-
-    root /var/www/html;
-
-    index index.html index.htm index.nginx-debian.html;
-
-    server_name _;
-
-    location / {
-        try_files $uri $uri/ =404;
-    }
-
-    location /redirect_me {
-        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-    }
-}
-",
-  notify  => Exec['nginx-restart'],
+exec {'redirection':
+  command  => 'sudo sed -i "/server_name _;/ a\\\trewrite ^/redirect_me http://www.theroom.com permanent;" /etc/nginx/sites-available/default',
+  provider => shell,
+  path     => '/usr/bin:/usr/sbin:/bin',
 }
 
-exec { 'nginx-restart':
-  command     => '/bin/systemctl restart nginx',
-  refreshonly => true,
-  subscribe   => [
-  File['/etc/nginx/sites-available/default'],
-  File['/var/www/html/index.nginx-debian.html'],
-],
+exec {'starting':
+  command  => 'sudo service nginx start',
+  provider => shell,
+  path     => '/usr/bin:/usr/sbin:/bin',
 }
