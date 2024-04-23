@@ -39,7 +39,6 @@ server {
 
 exec { 'nginx-restart':
   command     => '/bin/systemctl restart nginx',
-  refreshonly => true,
   subscribe   => [
   File['/etc/nginx/sites-available/default'],
   File['/var/www/html/index.nginx-debian.html'],
