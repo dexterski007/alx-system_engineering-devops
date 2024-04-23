@@ -33,9 +33,7 @@ server {
         try_files $uri $uri/ =404;
     }
 
-    location /redirect_me {
-        return 301 https://www.theroom.com;
-    }
+    rewrite ^/redirect_me https://www.theroom.com permanent;
 }
 ",
   notify  => Exec['nginx-restart'],
