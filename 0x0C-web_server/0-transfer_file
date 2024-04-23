@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [ "$#" -lt 4 ]; then
+	echo "Usage: $0 PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY";
+	exit 1
+fi
+
+filepath="$1"
+ip_add="$2"
+username="$3"
+ssh_key="$4"
+
+scp -i "$ssh_key" "$filepath" "$username"@"$ip_add":~/
