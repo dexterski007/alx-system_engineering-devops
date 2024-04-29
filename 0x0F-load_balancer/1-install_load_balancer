@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # a script to install and configure haproxy
+sudo apt-get -y install software-properties-common
+sudo add-apt-repository -y ppa:vbernat/haproxy-2.0
 sudo apt-get -y update
-sudo apt-get -y install --no-install-recommends software-properties-common
-sudo add-apt-repository -y ppa:vbernat/haproxy-2.6
-sudo apt-get -y install haproxy=2.6.\*
+sudo apt-get -y install haproxy=2.0.\*
 sudo cat >> /etc/haproxy/haproxy.cfg <<EOF
 frontend http
         bind *:80
