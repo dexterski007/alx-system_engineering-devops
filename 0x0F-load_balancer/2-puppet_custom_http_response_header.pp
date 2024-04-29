@@ -10,12 +10,6 @@ service { 'nginx':
   require => Package['nginx'],
 }
 
-file { '/var/www/html/index.nginx-debian.html':
-  ensure  => present,
-  content => 'Hello World!',
-  require => Package['nginx'],
-}
-
 file { '/etc/nginx/sites-available/default':
   ensure  => 'present',
   content => "
@@ -39,8 +33,5 @@ server {
 
 exec { 'nginx-restart':
   command   => '/bin/systemctl restart nginx',
-  subscribe => [
-  File['/etc/nginx/sites-available/default'],
-  File['/var/www/html/index.nginx-debian.html'],
-],
+  subscribe => File['/etc/nginx/sites-available/default'],
 }
