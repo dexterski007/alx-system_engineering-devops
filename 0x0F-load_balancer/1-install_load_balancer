@@ -14,4 +14,6 @@ backend webs
         server 531382-web-01 100.25.41.53:80
         server 531382-web-02 52.3.253.7:80
 EOF'
+
+sudo systemctl enable haproxy
 sudo systemctl restart haproxy
