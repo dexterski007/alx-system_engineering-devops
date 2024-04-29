@@ -15,4 +15,5 @@ backend web-backend
     	server 531382-web-01 100.25.41.53:80 check
     	server 531382-web-02 52.3.253.7:80 check
 EOF
+sudo sed -i "s/ENABLED=0/ENABLED=1/" /etc/default/haproxy
 sudo service haproxy restart
