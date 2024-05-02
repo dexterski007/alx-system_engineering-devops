@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#using python http server
+#using less than 5
 sed -i "s/8080 default_server/80 default_server/" /etc/nginx/sites-enabled/default
 service nginx restart
 pkill -o nginx
