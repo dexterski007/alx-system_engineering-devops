@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# get domain and subdomain info
+analyzer() {
+	domain="$1"
+	sub="$2"
+
+	if [ -z "$sub" ]; then
+		subs=("www" "lb-01" "web-01" "web-02")
+	else
+		subs=("$sub")
+	fi
+	for subdom in "${subs[@]}"; do
+		entry=$(dig "$subdom.$domain" +short)
+		entry_type=$(dig "$subdom.$domain" +nocomments +noquestion +noauthority +noadditional +nostats | awk '/IN/ {print $4}')
+		echo "The subdomain $subdom is a $entry_type record and points to $entry"
+	done
+}
+
+analyzer "$1" "$2"
