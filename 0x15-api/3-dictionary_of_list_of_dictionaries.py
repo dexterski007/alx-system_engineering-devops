@@ -21,10 +21,10 @@ def main():
             tasks = []
             for todo in todos_js:
                 task = {
-                "username": user['username'],
-                "task": todo['title'],
-                "completed": todo['completed']
-                }
+                        "username": user['username'],
+                        "task": todo['title'],
+                        "completed": todo['completed']
+                        }
                 tasks.append(task)
             json.dump({str(user_id): tasks}, jsonfile)
 
