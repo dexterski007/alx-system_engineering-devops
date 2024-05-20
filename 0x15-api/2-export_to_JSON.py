@@ -20,7 +20,7 @@ def main(id):
         tasks[str(userid)].append({
             "task": row['title'],
             "completed": row['completed'],
-            "username": username 
+            "username": username
             })
 
     with open("{}.json".format(id), 'w') as jsonfile:
