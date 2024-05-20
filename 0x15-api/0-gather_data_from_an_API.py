@@ -20,7 +20,7 @@ def main(id):
           .format(EMPLOYEE_NAME, NUMBER_OF_DONE_TASKS, TOTAL_NUMBER_OF_TASKS))
 
     for task in DONE_TASKS:
-        print("\t{}".format(task['title']))
+        print("\t {}".format(task['title']))
 
 
 if __name__ == '__main__':
