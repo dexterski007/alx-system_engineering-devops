@@ -17,7 +17,8 @@ def main(id):
 
     with open("{}.csv".format(id), 'w') as csvfile:
         fields = ['USERID', 'USERNAME', 'STATUS', 'TITLE']
-        writer = csv.DictWriter(csvfile, fieldnames=fields)
+        writer = csv.DictWriter(csvfile,
+                                fieldnames=fields, quoting=csv.QUOTE_ALL)
         for row in todo:
             writer.writerow({
                 'USERID': userid,
