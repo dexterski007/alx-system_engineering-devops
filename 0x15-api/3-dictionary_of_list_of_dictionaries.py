@@ -12,6 +12,7 @@ def main():
     userdata = userlist.json()
 
     with open("todo_all_employees.json", 'w') as jsonfile:
+        finalcut = {}
         for user in userdata:
             user_id = user['id']
             url_todos = 'https://jsonplaceholder.typicode.com/todos/'
@@ -26,7 +27,8 @@ def main():
                         "completed": todo['completed']
                         }
                 tasks.append(task)
-            json.dump({str(user_id): tasks}, jsonfile)
+            finalcut[user_id] = tasks
+        json.dump(finalcut, jsonfile)
 
 
 if __name__ == '__main__':
