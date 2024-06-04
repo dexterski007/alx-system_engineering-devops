@@ -36,7 +36,8 @@ def recursive(subreddit, word_list, after=None, new_dic=None):
         posts = data['data']['children']
         for post in posts:
             title = post['data']['title']
-            words_in_title = [word.lower().strip('.,!?:;') for word in title.split()]
+            words_in_title = [word.lower().strip('.,!?:;')
+                              for word in title.split()]
             for word in word_list:
                 new_dic[word] += words_in_title.count(word)
         after = data['data'].get('after')
