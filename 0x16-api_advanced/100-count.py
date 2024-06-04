@@ -13,7 +13,8 @@ def count_words(subreddit, word_list):
     sorted_dic = dict(sorted(new_dic.items()))
     if sorted_dic is not None:
         for key, value in sorted_dic.items():
-            print("{}: {}".format(key, value))
+            if sorted_dic[key] != 0:
+                print("{}: {}".format(key, value))
 
 
 def recursive(subreddit, word_list, after=None, new_dic=None):
