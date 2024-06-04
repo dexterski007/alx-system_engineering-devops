@@ -7,13 +7,12 @@ import requests
 
 def count_words(subreddit, word_list):
     """ search function with keywords """
-    for word in word_list:
-        word = word.lower()
+    word_list = [word.lower() for word in word_list]
     new_dic = recursive(subreddit, word_list, None, None)
-    sorted_dic = dict(sorted(new_dic.items()))
-    if sorted_dic is not None:
-        for key, value in sorted_dic.items():
-            if sorted_dic[key] != 0:
+    if new_dic:
+        sorted_dic = sorted(new_dic.items())
+        for key, value in sorted_dic:
+            if value > 0:
                 print("{}: {}".format(key, value))
 
 
@@ -37,13 +36,13 @@ def recursive(subreddit, word_list, after=None, new_dic=None):
         posts = data['data']['children']
         for post in posts:
             title = post['data']['title']
-            lower = [word.lower() for word in title.split(' ')]
-            for word in new_dic.keys():
-                new_dic[word] += lower.count(word)
+            words_in_title = [word.lower().strip('.,!?:;') for word in title.split()]
+            for word in word_list:
+                new_dic[word] += words_in_title.count(word)
         after = data['data'].get('after')
         if after:
             return recursive(subreddit, word_list, after, new_dic)
         else:
             return new_dic
     else:
-        return None
+        return new_dic
