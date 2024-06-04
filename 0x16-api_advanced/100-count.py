@@ -35,12 +35,10 @@ def recursive(subreddit, word_list, after=None, new_dic=None):
         data = response.json()
         posts = data['data']['children']
         for post in posts:
-            title = post['data']['title'].lower()
-            for word in word_list:
-                wordcount = sum(
-                    1 for w in title.split() if w == word
-                    )
-                new_dic[word.lower()] += wordcount
+            title = post['data']['title']
+            lower = [word.lower() for word in title.split(' ')]
+            for word in new_dic.keys():
+                new_dic[word] += lower.count(word)
         after = data['data'].get('after')
         if after:
             return recursive(subreddit, word_list, after, new_dic)
