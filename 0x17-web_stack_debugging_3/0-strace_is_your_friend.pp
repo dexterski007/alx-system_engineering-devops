@@ -1,5 +1,5 @@
-#repair apache2 installation
-file { '/var/www/html/wp-includes/class-wp-locale.phpp':
-  ensure => 'file',
-  source => '/var/www/html/wp-includes/class-wp-locale.php',
+#fix for apache2 installation
+exec { 'fix settings':
+  path    => ['/bin', '/usr/bin'],
+  command => 'sed -i "s/.phpp/.php/g" /var/www/html/wp-settings.php',
 }
