@@ -1,5 +1,6 @@
 # Postmortem: Personal website outage
-![funny html tombstone](https://i.vgy.me/R42zun.jpg)
+
+![software engineering is deadly fun!](https://github.com/dexterski007/alx-system_engineering-devops/assets/144383579/9c4f5a89-9e93-4e41-a3e6-2adcbe0bc849)
 
 ## Issue Summary:
 **Duration:** 1st June 2024 at 10:30 am UTC+1 - 1st June 2024 at 12:30 UTC+1.
@@ -8,7 +9,7 @@
 
 **Root Cause:** A data corruption occured on the hosting HDD, causing the corruption of the database and stopping the mysqldb service.
 
-![my poor hdd was dead](https://i.vgy.me/I6sND7.png)
+![my poor hdd is dead](https://github.com/dexterski007/alx-system_engineering-devops/assets/144383579/791486db-fb6a-40b1-9522-89b2d5e34749)
 
 ## Timeline:
 
