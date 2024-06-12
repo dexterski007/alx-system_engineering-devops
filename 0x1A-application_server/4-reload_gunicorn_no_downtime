@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 #reboot gunicorn gracefully
-sudo pgrep gunicorn | sudo xargs kill -HUP
+#shellcheck disable=SC2009
+ps aux | grep gunicorn | awk '{ print $2 }' | xargs kill -HUP
