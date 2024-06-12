@@ -13,6 +13,9 @@ Environment="HBNB_MYSQL_DB=hbnb_dev_db"
 Environment="HBNB_TYPE_STORAGE=db"
 ExecStart=/usr/bin/gunicorn --workers 3 --bind 0.0.0.0:5003 --access-logfile /tmp/airbnb-error.log --error-logfile /tmp/airbnb-error.log web_dynamic.2-hbnb:app
 Restart=always
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
 
 [Install]
 WantedBy=multi-user.target
