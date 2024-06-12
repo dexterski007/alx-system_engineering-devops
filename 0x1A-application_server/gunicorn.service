@@ -16,7 +16,9 @@ Restart=always
 KillMode=mixed
 TimeoutStopSec=5
 PrivateTmp=true
-
+SyslogIdentifier=gunicorn
+StandardOutput=append:/tmp/airbnb-access.log
+StandardError=append:/tmp/airbnb-error.log
 
 [Install]
 WantedBy=multi-user.target
